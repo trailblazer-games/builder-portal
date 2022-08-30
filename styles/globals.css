@@ -26,5 +26,7 @@ a {
 }
 
 div.scheme-container {
-  background: transparent!important
+  background: transparent!important;
+  padding: 0px 0px 20px 0px!important;
+  box-shadow: none!important;
 }
