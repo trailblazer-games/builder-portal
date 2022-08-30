@@ -13,7 +13,6 @@ servers:
     description: Production server
 
 paths:
-
   /dragon/{mintAddress}:
     get:
       summary: Returns an Eternal Dragon
@@ -30,11 +29,8 @@ paths:
           description: A JSON of a dragon
           content:
             application/json:
-              schema: 
-                type: array
-                description: Dragon atributes
-                items:
-                  $ref: '#/components/schemas/Dragon'
+              schema:
+                $ref: "#/components/schemas/Dragon"
 
   /dragons/{walletAddress}:
     get:
@@ -52,8 +48,26 @@ paths:
           description: A JSON array of users Eternal Dragons
           content:
             application/json:
-              schema: 
-                $ref: '#/components/schemas/Dragon'
+              schema:
+                type: array
+                description: Dragon atributes
+                items:
+                  $ref: "#/components/schemas/Dragon"
+
+  /ranks:
+    get:
+      summary: Returns a list of each draron ranking data
+      description: Returns a list of each draron ranking data
+      responses:
+        "200":
+          description: Rank data
+          content:
+            application/json:
+              schema:
+                type: array
+                description: Dragon atributes
+                items:
+                  $ref: "#/components/schemas/Rank"
 
 components:
   schemas:
@@ -140,3 +154,33 @@ components:
         symbol:
           type: string
           description: Symbol of Eternal Dragons
+    Rank:
+      type: object
+      properties:
+        affinity:
+          type: string
+          description: Affinity of the dragon
+        class:
+          type: string
+          description: Class of the dragon
+        gene:
+          type: number
+          description: Gene score of a dragon
+        id:
+          type: string
+          description: Dragon mint address
+        label:
+          type: string
+          description: Rarity of a dragon
+        name:
+          type: string
+          description: Name of a dragon
+        powere:
+          type: number
+          description: Power score of a dragon
+        total:
+          type: number
+          description: Total score of a dragon
+        visual:
+          type: number
+          description: Visual score of a dragon
