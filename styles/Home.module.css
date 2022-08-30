@@ -1,5 +1,11 @@
 .container {
-  padding: 0 2rem;
+  background: white;
+  background-image: url("/Home_Page_02_1080p.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 60%;
+  height: 100vh;
+  overflow: auto
 }
 
 .main {
@@ -8,7 +14,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
 }
 
