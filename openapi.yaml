@@ -1,0 +1,142 @@
+openapi: 3.0.0
+info:
+  title: Eternal Dragons API
+  description: Eternal Dragons REST API endpoints
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:4000/development
+    description: Develeopmnet server
+  - url: https://dna.dragonspawn.xyz
+    description: Staging server
+  - url: https://api.eternaldragons.com
+    description: Production server
+
+paths:
+
+  /dragon/{mintAddress}:
+    get:
+      summary: Returns an Eternal Dragon
+      description: Returns an Eternal Dragon
+      parameters:
+        - name: mintAddress
+          in: path
+          required: true
+          description: Mint address of the dragon
+          schema:
+            type: string
+      responses:
+        "200":
+          description: A JSON of a dragon
+          content:
+            application/json:
+              schema: 
+                type: array
+                description: Dragon atributes
+                items:
+                  $ref: '#/components/schemas/Dragon'
+
+  /dragons/{walletAddress}:
+    get:
+      summary: Returns a list of user Eternal Dragons
+      description: Returns a list of user Eternal Dragons
+      parameters:
+        - name: walletAddress
+          in: path
+          required: true
+          description: User solana wallet address
+          schema:
+            type: string
+      responses:
+        "200":
+          description: A JSON array of users Eternal Dragons
+          content:
+            application/json:
+              schema: 
+                $ref: '#/components/schemas/Dragon'
+
+components:
+  schemas:
+    Dragon:
+      type: object
+      properties:
+        affinity:
+          type: string
+          description: Affinity of the dragon
+        attributes:
+          type: array
+          description: Dragon atributes
+          items:
+            type: object
+            properties:
+              trait_type:
+                type: string
+              value:
+                type: string
+        canReveal:
+          type: boolean
+          description: Can dragon be revealed
+        class:
+          type: string
+          description: Class of the dragon
+        collection:
+          type: array
+          description: Collection to which this dragon belongs to
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              family:
+                type: string
+        description:
+          type: string
+          description: Description of this dragon
+        image:
+          type: string
+          description: Image URL of this dragon
+        mint:
+          type: string
+          description: Mint address of this dragon
+        name:
+          type: string
+          description: Name of this dragon
+        properties:
+          type: object
+          description: List of dragon assets
+          properties:
+            files:
+              type: array
+              description: List of dragons URIs
+              items:
+                type: object
+                properties:
+                  uri:
+                    type: string
+            category:
+              type: number
+        score:
+          type: object
+          description: Dragon performance scores
+          properties:
+            visual:
+              type: number
+            power:
+              type: number
+            gene:
+              type: number
+            total:
+              type: number
+            tier:
+              type: number
+            label:
+              type: string
+        seller_fee_basis_points:
+          type: number
+          description: Percentage of how much percentage seller will get
+        status:
+          type: number
+          description: Status of the request that get the dragon
+        symbol:
+          type: string
+          description: Symbol of Eternal Dragons
