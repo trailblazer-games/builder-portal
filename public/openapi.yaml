@@ -6,7 +6,7 @@ info:
 
 servers:
   - url: http://localhost:4000/development
-    description: Develeopmnet server
+    description: Development server
   - url: https://dna.dragonspawn.xyz
     description: Staging server
   - url: https://api.eternaldragons.com
@@ -56,7 +56,7 @@ paths:
 
   /ranks:
     get:
-      summary: Returns a list of each draron ranking data
+      summary: Returns a list of dragon ranking data
       description: Returns a list of each draron ranking data
       responses:
         "200":
