@@ -38,3 +38,12 @@ div.scheme-container {
 .opblock-summary-path {
   max-width: 120px!important;
 }
+
+.swagger-ui table tbody tr td:first-of-type {
+  min-width: 1em!important;
+}
+
+.servers select {
+  width: 290px!important;
+  white-space: normal!important;
+}
