@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Eternal Dragons API
-  description: Eternal Dragons REST API endpoints
+  description: Eternal Dragons REST API
   version: 1.0.0
 
 servers:
@@ -13,12 +13,12 @@ servers:
     description: Production server
 
 paths:
-  /dragon/{mintAddress}:
+  /dragon/{mint}:
     get:
-      summary: Returns an Eternal Dragon
-      description: Returns an Eternal Dragon
+      summary: Returns a dragon
+      description: Returns a dragon
       parameters:
-        - name: mintAddress
+        - name: mint
           in: path
           required: true
           description: Mint address of the dragon
@@ -32,12 +32,12 @@ paths:
               schema:
                 $ref: "#/components/schemas/Dragon"
 
-  /dragons/{walletAddress}:
+  /dragons/{address}:
     get:
-      summary: Returns a list of user Eternal Dragons
-      description: Returns a list of user Eternal Dragons
+      summary: Returns a list of user dragons
+      description: Returns a list of user dragons
       parameters:
-        - name: walletAddress
+        - name: address
           in: path
           required: true
           description: User solana wallet address
@@ -45,27 +45,27 @@ paths:
             type: string
       responses:
         "200":
-          description: A JSON array of users Eternal Dragons
+          description: A JSON array of user dragons
           content:
             application/json:
               schema:
                 type: array
-                description: Dragon atributes
+                description: A JSON array of user dragons
                 items:
                   $ref: "#/components/schemas/Dragon"
 
   /ranks:
     get:
-      summary: Returns a list of dragon ranking data
-      description: Returns a list of each draron ranking data
+      summary: Returns a list of dragons ranking
+      description: Returns a list of dragons ranking
       responses:
         "200":
-          description: Rank data
+          description: A JSON array of dragons ranking
           content:
             application/json:
               schema:
                 type: array
-                description: Dragon atributes
+                description: A JSON array of dragons ranking
                 items:
                   $ref: "#/components/schemas/Rank"
 
@@ -95,7 +95,7 @@ components:
           description: Class of the dragon
         collection:
           type: array
-          description: Collection to which this dragon belongs to
+          description: Collection to which the dragon belongs to
           items:
             type: object
             properties:
@@ -105,19 +105,19 @@ components:
                 type: string
         description:
           type: string
-          description: Description of this dragon
+          description: Description of the dragon
         image:
           type: string
-          description: Image URL of this dragon
+          description: Image URL of the dragon
         mint:
           type: string
-          description: Mint address of this dragon
+          description: Mint address of the dragon
         name:
           type: string
-          description: Name of this dragon
+          description: Name of the dragon
         properties:
           type: object
-          description: List of dragon assets
+          description: List of dragon properties
           properties:
             files:
               type: array
@@ -129,9 +129,12 @@ components:
                     type: string
             category:
               type: number
+        revealCountdownMs:
+          type: number
+          description: Counter in ms after which user can reveal dragon (optional).
         score:
           type: object
-          description: Dragon performance scores
+          description: Dragon rarity scores
           properties:
             visual:
               type: number
@@ -147,13 +150,13 @@ components:
               type: string
         seller_fee_basis_points:
           type: number
-          description: Percentage of how much percentage seller will get
+          description: Percentage of the seller fee
         status:
           type: number
-          description: Status of the request that get the dragon
+          description: Status of the request that load the dragon
         symbol:
           type: string
-          description: Symbol of Eternal Dragons
+          description: Symbol of the dragon
     Rank:
       type: object
       properties:
@@ -165,22 +168,22 @@ components:
           description: Class of the dragon
         gene:
           type: number
-          description: Gene score of a dragon
+          description: Gene score of the dragon
         id:
           type: string
-          description: Dragon mint address
+          description: Mint address of the dragon
         label:
           type: string
-          description: Rarity of a dragon
+          description: Rarity label of the dragon
         name:
           type: string
-          description: Name of a dragon
-        powere:
+          description: Name of the dragon
+        power:
           type: number
-          description: Power score of a dragon
+          description: Power score of the dragon
         total:
           type: number
-          description: Total score of a dragon
+          description: Total score of the dragon
         visual:
           type: number
-          description: Visual score of a dragon
+          description: Visual score of the dragon

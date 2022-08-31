@@ -2,20 +2,11 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-//let SwaggerUI = require('swagger-ui')
 import { useEffect } from 'react'
 import SwaggerUI from "swagger-ui-react"
 import "swagger-ui-react/swagger-ui.css"
 
 const Home: NextPage = () => {
-
-  useEffect(() => {
-    /*SwaggerUI({
-      dom_id: '#start',
-      url: 'openapi.yaml'
-    })*/
-  })
-
   return (
     <div className={styles.container}>
       <Head>
