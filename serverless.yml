@@ -1,0 +1,8 @@
+dragon-portal-builder:
+    component: "@sls-next/serverless-component@3.6.0" # it is recommended you pin the latest stable version of serverless-next.js
+    inputs:
+        useServerlessTraceTarget: true
+        cloudfront:
+            distributionId: EWO2T51W17CLM
+        bucketName: eternal-dragons-builder-portal
+        bucketRegion: eu-west-1
