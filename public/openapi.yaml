@@ -56,16 +56,16 @@ paths:
 
   /ranks:
     get:
-      summary: Returns a list of dragons ranking
-      description: Returns a list of dragons ranking
+      summary: Returns a list of dragons rarity scores
+      description: Returns a list of dragons rarity scores
       responses:
         "200":
-          description: A JSON array of dragons ranking
+          description: A JSON array of dragons rarity scores
           content:
             application/json:
               schema:
                 type: array
-                description: A JSON array of dragons ranking
+                description: A JSON array of dragons rarity scores
                 items:
                   $ref: "#/components/schemas/Rank"
 
