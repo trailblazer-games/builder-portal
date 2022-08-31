@@ -30,3 +30,11 @@ div.scheme-container {
   padding: 0px 0px 20px 0px!important;
   box-shadow: none!important;
 }
+
+.parameters-container input {
+  color: black!important;
+}
+
+.opblock-summary-path {
+  max-width: 120px!important;
+}
