@@ -1,6 +1,6 @@
 # Eternal Dragons Builder Portal
 
-Welcome to Eternal Dragons Developer Portal!
+Welcome to Eternal Dragons Builders Portal!
 
 This repository contains all the information related to API, blockchain data and others resources available to builders to leverage the Eternal Dragon Universe.
 
