@@ -1,22 +1,23 @@
 openapi: 3.0.0
 info:
-  title: Eternal Dragons API
-  description: Eternal Dragons REST API
+  title: Dragons Lair
+  description: |
+    Dragons Lair provides data about dragons. \
+    From this service, you can fetch on-chain and off-chain dragons information in a scalable way.
   version: 0.0.3
 
 servers:
-  - url: http://localhost:4000/development
-    description: Development server
-  - url: https://dna.dragonspawn.xyz
-    description: Staging server
   - url: https://api.eternaldragons.com
-    description: Production server
+    description: Dragon Repository
 
 paths:
-  /dragon/{mint}:
+  '/dragon/{mint}':
     get:
       summary: Returns a dragon
-      description: Returns a dragon
+      operationId: GetDragon
+      description: |
+        This endpoint will return a dragon if it exists. \
+        It will query the blockchain for on-chain data and add the game-specific off-chain data. 
       parameters:
         - name: mint
           in: path
@@ -32,10 +33,12 @@ paths:
               schema:
                 $ref: "#/components/schemas/Dragon"
 
-  /dragons/{address}:
+  '/dragons/{address}':
     get:
-      summary: Returns a list of user dragons
-      description: Returns a list of user dragons
+      summary: Returns a list of dragons for a Solana wallet
+      description: |
+        This call returns a list of dragons for a Solana wallet address. <br/>
+        This endpoint queries the Solana blockchain and is heavy in processing.
       parameters:
         - name: address
           in: path
@@ -54,10 +57,10 @@ paths:
                 items:
                   $ref: "#/components/schemas/Dragon"
 
-  /ranks:
+  '/ranks':
     get:
-      summary: Returns a list of dragons rarity scores
-      description: Returns a list of dragons rarity scores
+      summary: Returns a list of revealed dragons
+      description: This endpoint will return all revealed dragons with their rarity, gene, visual and power scores.
       responses:
         "200":
           description: A JSON array of dragons rarity scores

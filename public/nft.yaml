@@ -1,0 +1,150 @@
+openapi: 3.0.0
+components:
+  schemas:
+    NFTMetaResults:
+      type: array
+      default: []
+      title: NFT
+      items:
+        type: object
+        default: {}
+        title: Operation response
+        required:
+          - status
+          - nft
+        properties:
+          status:
+            type: integer
+            default: 0
+            title: Operation Result, succeed >= 0
+          nft:
+            type: array
+            default: []
+            title: List of NTF Status
+            items:
+              type: object
+              default: {}
+              title: NFT Status
+              required:
+                - owner
+                - mint
+                - lastTransactionTime
+              properties:
+                owner:
+                  type: string
+                  title: NFT's wallet owner
+                mint:
+                  type: string
+                  title: Mint address
+                lastTransactionTime:
+                  type: integer
+                  default: 0
+                  title: Last transaction time
+  securitySchemes: {}
+info:
+  title: 'Eternal Dragon NFT Status'
+  description: Eternal Dragon NFT Status allows searching NFT in the Eternal Dragon universe by owner, id or mint address 
+  version: '0.1'
+
+servers:
+  - url: https://nft.eternaldragons.com
+    description: Eternal Dragon NFT Status
+
+
+paths:
+  '/tx/{mint}':
+    get:
+      operationId: GetNFTTansactions
+      summary: >-
+        Return all NFT of the Eternal Dragons universe belonging to a specific
+        user
+      description: >-
+        Return all NFT of the Eternal Dragons universe belonging to a specific
+        user
+      parameters:
+        - name: mint
+          in: path
+          required: true
+          description: Mint address of the dragon
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Status 200 Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NFTMetaResults'
+  '/id/{id}':
+    get:
+      operationId: GetNFTForId
+      summary: Return NFT mint corresponding to this id
+      description: Return NFT mint corresponding to this id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id of the dragon
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Status 200 Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NFTMetaResults'
+  /nfts:
+    get:
+      operationId: GetALLMintAddress
+      summary: Return all NFT mint of the ED universe
+      description: Return all NFT mint of the ED universe
+      responses:
+        '200':
+          description: Status 200 Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NFTMetaResults'
+  '/owner/{address}':
+    get:
+      operationId: GetNFTForOwner
+      summary: >-
+        Return all NFT of the Eternal Dragons universe belonging to a specific
+        user
+      description: >-
+        Return all NFT of the Eternal Dragons universe belonging to a specific
+        user
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Wallet of the dragon's owner
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Status 200 Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NFTMetaResults'
+  '/nft/{mint}':
+    get:
+      operationId: GetOwnerForNFT
+      summary: Return the address of the owner of a specific NFT in the ED universe
+      description: Return the address of the owner of a specific NFT in the ED universe
+      parameters:
+        - name: mint
+          in: path
+          required: true
+          description: Mint address of the Dragon
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Status 200 Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NFTMetaResults'
